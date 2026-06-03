@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMARTFON STUDIO SP Z O O | Premium Electronics Retail & Repair</title>
+    <meta name="description" content="Leading electronics retailer, precision equipment repair center, and tech insurance broker in Katowice, Poland.">
+    <style>
+        /* DESIGN SYSTEM: MODERN TECH & GADGET RETAIL */
+        :root {
+            --bg-body: #F9FAFB;         /* Very Light Gray/Off-White */
+            --bg-surface: #FFFFFF;      /* Pure White */
+            --primary-blue: #3B82F6;    /* Electric Blue */
+            --primary-blue-dark: #2563EB;
+            --accent-purple: #8B5CF6;   /* Vibrant Purple */
+            --text-main: #111827;       /* Dark Slate */
+            --text-muted: #6B7280;      /* Gray */
+            --border-light: #E5E7EB;    /* Light Border */
+            
+            --font-display: 'Inter', -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Abstract Tech Background Blobs */
+        .bg-blob {
+            position: fixed;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+            animation: drift 20s infinite alternate ease-in-out;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--primary-blue); }
+        .blob-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-purple); animation-delay: -5s; }
+
+        @keyframes drift {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(5%, 10%); }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        /* CSS Smart Device Icon */
+        .logo-icon {
+            width: 24px; height: 36px;
+            border: 3px solid var(--primary-blue);
+            border-radius: 6px;
+            position: relative;
+            display: flex; align-items: flex-end; justify-content: center;
+            padding-bottom: 4px;
+        }
+        .logo-icon::after {
+            content: ''; width: 8px; height: 2px; background: var(--primary-blue); border-radius: 2px;
+        }
+
+        .nav-links { display: flex; gap: 35px; font-weight: 600; font-size: 0.9rem; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-blue); }
+
+        .btn-nav {
+            background: var(--text-main);
+            color: var(--bg-surface) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .btn-nav:hover { background: var(--primary-blue); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 100vh;
+            padding: 140px 5% 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 25px;
+            letter-spacing: -1.5px;
+            color: var(--text-main);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            color: var(--bg-surface);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Abstract Tech Graphic */
+        .hero-graphic {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .abstract-device {
+            width: 280px; height: 420px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transform: rotate(-5deg);
+            z-index: 2;
+        }
+        
+        .abstract-device::before {
+            content: ''; position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px;
+            background: linear-gradient(135deg, #F3F4F6, #E5E7EB);
+            border-radius: 15px;
+        }
+
+        .abstract-device-back {
+            position: absolute;
+            width: 280px; height: 420px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            border-radius: 30px;
+            transform: rotate(10deg) translate(30px, 20px);
+            z-index: 1;
+            opacity: 0.8;
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        /* --- OPERATIONS GRID --- */
+        .section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--text-main);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary-blue);
+        }
+
+        .service-icon {
+            width: 54px; height: 54px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- B2C APP PROMO (CRITICAL FOR GOOGLE PLAY CONSOLE) --- */
+        .app-promo {
+            background: var(--text-main);
+            border-radius: 40px;
+            padding: 80px 5%;
+            margin: 60px 0;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            color: var(--bg-surface);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(17, 24, 39, 0.5);
+        }
+
+        .app-text h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .app-text p {
+            color: #9CA3AF;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .app-list { list-style: none; margin: 30px 0; }
+        .app-list li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-weight: 500;
+        }
+        .app-list li::before {
+            content: '✓';
+            color: var(--bg-surface);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* CSS Phone Mockup - Retail & Repair Tracker */
+        .mockup-phone {
+            width: 100%;
+            max-width: 320px;
+            height: 600px;
+            margin: 0 auto;
+            background: var(--bg-body);
+            border: 12px solid #374151; /* Dark Gray Bezel */
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 25px;
+            background: #374151;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .ui-header {
+            margin-top: 25px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--text-main);
+        }
+        .ui-header h4 { font-size: 1.1rem; font-weight: 800; }
+
+        .ui-card {
+            background: var(--bg-surface);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-light);
+        }
+
+        .ui-status-title { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+        .ui-device-name { font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
+        
+        .progress-track {
+            height: 6px; background: var(--border-light); border-radius: 3px; margin-bottom: 10px;
+        }
+        .progress-fill {
+            width: 75%; height: 100%; background: linear-gradient(90deg, var(--primary-blue), var(--accent-purple)); border-radius: 3px;
+        }
+        .ui-status-text { font-size: 0.85rem; color: var(--primary-blue); font-weight: 600; }
+
+        .ui-btn {
+            margin-top: auto;
+            background: var(--text-main);
+            color: var(--bg-surface);
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        /* --- VERIFICATION REGISTRY (D&B EXACT MATCH) --- */
+        .registry-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+        }
+
+        .data-panel {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .data-row {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--bg-body);
+        }
+        .data-row:last-child { border: none; margin: 0; padding: 0; }
+
+        .data-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .data-value {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            background: var(--bg-surface);
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--text-main);
+            color: var(--bg-surface);
+            padding: 80px 5% 40px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: var(--bg-surface);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: var(--primary-blue); }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #6B7280;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 992px) {
+            header, .app-promo, .registry-grid { grid-template-columns: 1fr; }
+            header { padding-top: 120px; }
+            .nav-links { display: none; }
+            .hero-graphic { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            SMARTFON STUDIO
+        </div>
+        <div class="nav-links">
+            <a href="#services">Retail & Services</a>
+            <a href="#app">Connect App</a>
+            <a href="#registry">Corporate Profile</a>
+            <a href="#contact" class="btn-nav">Contact Hub</a>
+        </div>
+    </nav>
+
+    <header>
+        <div>
+            <div class="hero-tag">Electronics Retail & Precision Repair</div>
+            <h1>The Hub for <br><span class="text-gradient">Smart Devices</span> <br>& Care.</h1>
+            <p>SMARTFON STUDIO SP Z O O is Poland's premier electronics retailer, providing certified equipment repair, device insurance brokering, and tech leasing in Katowice.</p>
+            <a href="#app" class="btn-primary">Download Connect App</a>
+        </div>
+        <div class="hero-graphic">
+            <div class="abstract-device-back"></div>
+            <div class="abstract-device"></div>
+        </div>
+    </header>
+
+    <section id="services" class="section">
+        <div class="section-header">
+            <h2>Our Core Divisions</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Electronics Retail</h3>
+                <p>Operating as top-tier Electronics and Appliance Retailers, offering a curated selection of smart devices, wearables, and miscellaneous technology goods.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Precision Repair</h3>
+                <p>Specializing in Electronic and Precision Equipment Repair and Maintenance, restoring smartphones, laptops, and appliances to factory standards.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Tech Insurance & Leasing</h3>
+                <p>Providing device protection via Insurance Brokerages, and managing specialized equipment fleets through Automotive Equipment Rental and Leasing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="app" class="section" style="padding-top: 0;">
+        <div class="app-promo">
+            <div class="app-text">
+                <div class="hero-tag" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Google Play Publisher Partner</div>
+                <h2>Smartfon Connect App</h2>
+                <p style="color: var(--bg-surface); font-size: 1.15rem; font-weight: 600;">
+                    To elevate our customer experience and streamline service center operations, <strong>SMARTFON STUDIO SP Z O O maintains a dedicated mobile application.</strong>
+                </p>
+                <p>
+                    The <em>Smartfon Connect</em> app allows our retail and repair customers to instantly track the status of their devices in our workshop, purchase extended insurance policies, and browse our latest electronics catalog directly from their Android devices.
+                </p>
+                
+                <ul class="app-list">
+                    <li>Live Repair Tracker: Monitor diagnostics, parts ordering, and fixes.</li>
+                    <li>Digital Device Insurance: Manage your tech coverage policies.</li>
+                    <li>Retail E-Commerce: Browse and order smart accessories.</li>
+                    <li>Equipment Rental Booking: Reserve fleet or tech hardware.</li>
+                </ul>
+            </div>
+            
+            <div class="mockup-phone">
+                <div class="phone-notch"></div>
+                <div class="ui-header">
+                    <h4>SMARTFON CONNECT</h4>
+                </div>
+                
+                <div class="ui-card">
+                    <div class="ui-status-title">Repair Ticket #8849</div>
+                    <div class="ui-device-name">MacBook Pro 16"</div>
+                    <div class="progress-track"><div class="progress-fill"></div></div>
+                    <div class="ui-status-text">Status: Final Testing</div>
+                </div>
+
+                <div class="ui-card" style="border-color: var(--primary-blue);">
+                    <div class="ui-status-title">Active Insurance Policy</div>
+                    <div class="ui-device-name" style="margin-bottom: 0;">iPhone 15 Pro Max</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Coverage: Accidental Damage (Active)</div>
+                </div>
+
+                <div class="ui-btn">Shop Accessories</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="registry" class="section">
+        <div class="section-header">
+            <h2>Corporate Verification</h2>
+        </div>
+        <div class="registry-grid">
+            
+            <div class="data-panel">
+                <div class="data-row">
+                    <span class="data-label">Legal Entity Name</span>
+                    <span class="data-value">SMARTFON STUDIO SP Z O O</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Key Principal</span>
+                    <span class="data-value">Lokaienko Vitalii</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Industry Classification</span>
+                    <span class="data-value" style="font-size: 0.95rem;">
+                        • Electronics and Appliance Retailers<br>
+                        • Other Miscellaneous Retailers<br>
+                        • Agencies, Brokerages, and Other Insurance Related Activities<br>
+                        • Automotive Equipment Rental and Leasing<br>
+                        • Electronic and Precision Equipment Repair and Maintenance
+                    </span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Registered Headquarters</span>
+                    <span class="data-value" style="font-size: 0.95rem;">
+                        Ul. Stawowa 4 Katowice<br>
+                        śląskie, 40-095<br>
+                        Poland
+                    </span>
+                </div>
+                <div class="data-row" style="border: none;">
+                    <span class="data-label">Official Support Channel</span>
+                    <span class="data-value" style="color: var(--primary-blue);">info@smartfonstudio.cloud</span>
+                </div>
+            </div>
+
+            <div id="contact">
+                <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 20px;">Client Services</h3>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">For inquiries regarding device repairs, commercial electronics retail, or technical support for the Smartfon Connect App.</p>
+                
+                <form onsubmit="event.preventDefault();">
+                    <input type="text" placeholder="Full Name / Client ID" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Describe your repair issue or app inquiry..." rows="4" required></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Submit Request</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 15px; color: var(--bg-surface);">
+                    <div class="logo-icon" style="border-color: var(--bg-surface);"></div>
+                    SMARTFON STUDIO
+                </div>
+                <p style="color: #9CA3AF; font-size: 0.9rem;">Elevating the standards of electronics retail, precision repair, and device insurance in Poland.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>App Developer Policies</h4>
+                <ul>
+                    <li><a href="#">Google Play Publisher Status</a></li>
+                    <li><a href="#">Report App Technical Bug</a></li>
+                    <li><a href="#" style="color: #fff; font-weight: bold;">Request Account & Data Deletion</a></li>
+                    <li><a href="#">Device Tracking Permissions</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Legal & Compliance</h4>
+                <ul>
+                    <li><a href="#">Repair Service Warranty</a></li>
+                    <li><a href="#">Privacy Policy (GDPR)</a></li>
+                    <li><a href="#">Insurance Brokerage Terms</a></li>
+                    <li><a href="#">Retail Returns Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 SMARTFON STUDIO SP Z O O. Registered in Poland. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
